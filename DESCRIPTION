@@ -1,40 +1,26 @@
-Package: gtfsr
+Package: bust
 Type: Package
-Title: Working with GTFS (General Transit Feed Specification) feeds in R
-Version: 1.0.3
+Title: Calculate headways for Transit from GTFS data. 
+Version: 0.1.0
 Authors@R: as.person(c(
-    "Elaine McVey <elaine.mcvey@transloc.com> [aut]",
-    "Danton Noriega-Goodwin <danton.noriega@gmail.com> [aut, cre]",
-    "Charles Hans Thompson <hans.thompson1@gmail.com> [ctb]",
-    "Michael Sumner [ctb]",
-    "Tom Buckley <buckley.tom@gmail.com> [ctb]"
+    "Tom Buckley <tom@tbuckl.com> [aut,cre]",
+    "Danton Noriega-Goodwin <danton.noriega@gmail.com> [ctb]"
   ))
-Description: Provides API wrappers for popular public GTFS feed sharing sites, reads feed data into a gtfs data object, validates data quality, provides convenience functions for common tasks.
+Description: Calculate headways for Transit from GTFS data.  
 License: GPL
 LazyData: TRUE
 Depends: R (>= 3.2.4)
-Remotes: 
-    github::rstudio/leaflet
 Imports:
     dplyr,
     tibble,
-    readr,
-    httr,
-    htmltools,
-    magrittr,
-    stringr,
-    assertthat,
-    leaflet,
-    sp,
-    sf,
-    scales,
-    here
+    lubridate,
+    readgtfs
 Suggests:
     testthat,
     knitr,
     rmarkdown
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
-URL: http://ropensci.github.io/gtfsr, https://github.com/ropensci/gtfsr
-BugReports: https://github.com/ropensci/gtfsr/issues
+URL: https://github.com/r-gtfs/gtschedule
+BugReports: https://github.com/r-gtfs/gtschedule/issues
 Roxygen: list(markdown = TRUE)
