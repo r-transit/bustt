@@ -22,8 +22,7 @@ You can install this package from GitHub using the devtools package:
 
 ``` r
 library(dplyr)
-library(readgtfs)
-library(lubridate)
+library(tread)
 library(bust)
 ```
 

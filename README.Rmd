@@ -42,7 +42,7 @@ Example Usage
 
 ```{r readme-body}
 library(dplyr)
-library(readgtfs)
+library(tread)
 library(bust)
 ```
 

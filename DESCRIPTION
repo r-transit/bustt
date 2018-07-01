@@ -14,7 +14,7 @@ Imports:
     dplyr,
     tibble,
     lubridate,
-    readgtfs
+    tread
 Suggests:
     testthat,
     knitr,
