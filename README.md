@@ -16,7 +16,7 @@ You can install this package from GitHub using the devtools package:
     if (!require(devtools)) {
         install.packages('devtools')
     }
-    devtools::install_github('r-gtfs/gtschedule')
+    devtools::install_github('r-gtfs/bustt')
 
 ## Example Usage
 
