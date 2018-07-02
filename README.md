@@ -1,7 +1,7 @@
 
 ## Description
 
-`bust` is a package for working with time in transit schedule data. In
+`bustt` is a package for working with time in transit schedule data. In
 particular, it is focused on questions like:
 
   - What are the headway of train lines at 59-Street Columbus Circle on
@@ -22,8 +22,8 @@ You can install this package from GitHub using the devtools package:
 
 ``` r
 library(dplyr)
-library(tread)
-library(bust)
+library(trread)
+library(bustt)
 ```
 
 ``` r
@@ -42,15 +42,10 @@ route_frequency_summary <- route_frequency(NYC) %>%
   arrange(median_headways)
 
 head(route_frequency_summary)
-#> # A tibble: 6 x 5
-#>   route_id median_headways mean_headways std_dev_headways stop_count
-#>   <chr>              <int>         <int>            <dbl>      <int>
-#> 1 GS                     4             4            0.01           4
-#> 2 L                      4             4            0.13          48
-#> 3 1                      5             5            0.14          76
-#> 4 7                      5             5            0.290         44
-#> 5 6                      6             7            2.84          76
-#> 6 E                      6            23           53.0           48
+#> # A tibble: 1 x 5
+#>   `"route_id"` median_headways mean_headways st_dev_headways stop_count
+#>   <chr>                  <int>         <int>           <dbl>      <int>
+#> 1 route_id                   9            51            151.       1794
 ```
 
 ### Stop Headways

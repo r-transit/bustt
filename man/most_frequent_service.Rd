@@ -15,3 +15,4 @@ the trips that are in the most frequent service window
 \description{
 Get the most frequent service for a set of trips.
 }
+\keyword{internal}

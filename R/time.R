@@ -2,16 +2,12 @@
 #' 
 #' @param stop_times_df a gtfsr$stop_times_df dataframe
 #' @return an dataframe with arrival and departure time set to lubridate types
-#' @examples 
-#' gt_as_dt(stop_times_df)
-#' stop_times_dt <- stop_times_df_as_dt(some_stops)
-#' #plot the histogram of departure times by hour
-#' hist(hour(stop_times_dt$departure_time))
+#' @keywords internal
 gt_as_dt <- function(stop_times_df) {
   stop_times_dt <- stop_times_df %>% 
     dplyr::mutate(
-      departure_time = lubridate::hms(departure_time),
-      arrival_time = lubridate::hms(arrival_time)
+      departure_time = lubridate::hms(.data$departure_time, quiet = TRUE),
+      arrival_time = lubridate::hms(.data$arrival_time, quiet = TRUE)
     )
   return(stop_times_dt)
 }
@@ -20,8 +16,7 @@ gt_as_dt <- function(stop_times_df) {
 #' 
 #' @param stop_times_df a gtfsr$stop_times_df dataframe with lubridate arrival_time and departure_time
 #' @return dataframe with only stop times within the hours specified, with time columns as lubridate periods
-#' @examples 
-#' filtered_stop_times <- filter_stop_times_by_hour(stop_times_df,start_hour=7,end_hour=10)
+#' @keywords internal
 filter_stop_times_by_hour <- function(stop_times, 
                                       start_hour, 
                                       end_hour) {

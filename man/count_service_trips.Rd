@@ -15,3 +15,4 @@ count of service by id
 \description{
 Summarise the number of trips per service
 }
+\keyword{internal}

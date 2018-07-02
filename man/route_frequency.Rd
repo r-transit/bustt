@@ -8,17 +8,23 @@ route_frequency(gtfs_obj, start_hour = 6, end_hour = 22, dow = c(1, 1, 1,
   1, 1, 0, 0))
 }
 \arguments{
-\item{gtfs_obj}{a standard gtfsr object}
+\item{gtfs_obj}{a list of gtfs dataframes as read by the trread package.}
 
-\item{start_time, }{}
+\item{start_hour}{(optional) an integer, default 6 (6 am)}
 
-\item{end_time, }{}
+\item{end_hour}{(optional) an integer, default 22 (10 pm)}
 
-\item{service}{e.g. "weekend" or "saturday"}
+\item{dow}{(optional) an integeger vector with days of week. monday=1. default: c(1,1,1,1,1,0,0)}
 }
 \value{
 route_headways a dataframe of route headways
 }
 \description{
 should take:
+}
+\examples{
+data(gtfs_obj)
+route_frequency_summary <- route_frequency(gtfs_obj)
+x <- order(route_frequency_summary$median_headways)
+head(route_frequency_summary[x,])
 }

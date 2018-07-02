@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 Description
 ----------
 
-`bust` is a package for working with time in transit schedule data. In particular, it is focused on questions like: 
+`bustt` is a package for working with time in transit schedule data. In particular, it is focused on questions like: 
 
 - What are the headway of train lines at 59-Street Columbus Circle on Saturdays?
 - What are the typical headway characteristics of the A Train on weekdays?
@@ -42,8 +42,8 @@ Example Usage
 
 ```{r readme-body}
 library(dplyr)
-library(tread)
-library(bust)
+library(trread)
+library(bustt)
 ```
 
 ```{r}

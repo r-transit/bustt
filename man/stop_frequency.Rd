@@ -8,23 +8,27 @@ stop_frequency(gtfs_obj, start_hour = 6, end_hour = 22, dow = c(1, 1, 1,
   1, 1, 0, 0), by_route = TRUE, wide = FALSE)
 }
 \arguments{
+\item{gtfs_obj}{a list of gtfs dataframes as read by the trread package.}
+
 \item{start_hour}{(optional) an integer indicating the start hour (default 7)}
 
 \item{end_hour}{(optional) an integer indicating the end hour (default 20)}
 
 \item{dow}{(optional) integer vector indicating which days of week to calculate for. default is weekday, e.g. c(1,1,1,1,1,0,0)}
 
+\item{by_route}{default TRUE, if FALSE then calculate headway for any line coming through the stop in the same direction on the same schedule.}
+
 \item{wide}{(optional) if true, then return a wide rather than tidy data frame}
-
-\item{gtfsr}{object}
-
-\item{byroute}{default TRUE, if FALSE then calculate headway for any line coming through the stop in the same direction on the same schedule.}
-
-\item{service_ids}{(optional) to calculate for a specific service id}
 }
 \value{
 a dataframe of stops with a "Trips" variable representing the count trips taken through each stop for a route within a given time frame
 }
 \description{
 for a trips df and a stop_times df, count the number of trips a bus takes through a given stop within a given time period
+}
+\examples{
+data(gtfs_obj)
+stop_frequency_summary <- stop_frequency(gtfs_obj, by_route=FALSE)
+x <- order(stop_frequency_summary$headway)
+head(stop_frequency_summary[x,])
 }

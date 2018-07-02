@@ -15,6 +15,4 @@ dataframe with only stop times within the hours specified, with time columns as 
 \description{
 Filter stop times by hour of the day
 }
-\examples{
-filtered_stop_times <- filter_stop_times_by_hour(stop_times_df,start_hour=7,end_hour=10)
-}
+\keyword{internal}

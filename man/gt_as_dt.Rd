@@ -15,9 +15,4 @@ an dataframe with arrival and departure time set to lubridate types
 \description{
 Get a dataframe with lubridate dates for the gtfs stop_times_df
 }
-\examples{
-gt_as_dt(stop_times_df)
-stop_times_dt <- stop_times_df_as_dt(some_stops)
-#plot the histogram of departure times by hour
-hist(hour(stop_times_dt$departure_time))
-}
+\keyword{internal}

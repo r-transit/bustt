@@ -1,12 +1,13 @@
-Package: bust
+Package: bustt
 Type: Package
-Title: Calculate headways for Transit from GTFS data. 
+Title: Bus and transit time and headways for GTFS
 Version: 0.1.0
 Authors@R: as.person(c(
     "Tom Buckley <tom@tbuckl.com> [aut,cre]",
-    "Danton Noriega-Goodwin <danton.noriega@gmail.com> [ctb]"
+    "Danton Noriega-Goodwin <danton.noriega@gmail.com> [ctb]",
+    "Michael Sumner [ctb]"
   ))
-Description: Calculate headways for Transit from GTFS data.  
+Description: Calculate headways and work with time and schedules for bus, train, etc on GTFS data.  
 License: GPL
 LazyData: TRUE
 Depends: R (>= 3.2.4)
@@ -14,7 +15,9 @@ Imports:
     dplyr,
     tibble,
     lubridate,
-    tread
+    trread,
+    tidyr,
+    rlang
 Suggests:
     testthat,
     knitr,

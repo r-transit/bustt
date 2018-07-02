@@ -1,13 +1,21 @@
 #' for a trips df and a stop_times df, count the number of trips a bus takes through a given stop within a given time period
-#' @param gtfsr object
+#' @param gtfs_obj a list of gtfs dataframes as read by the trread package.
 #' @param start_hour (optional) an integer indicating the start hour (default 7)
 #' @param end_hour (optional) an integer indicating the end hour (default 20)
 #' @param dow (optional) integer vector indicating which days of week to calculate for. default is weekday, e.g. c(1,1,1,1,1,0,0)
-#' @param byroute default TRUE, if FALSE then calculate headway for any line coming through the stop in the same direction on the same schedule. 
+#' @param by_route default TRUE, if FALSE then calculate headway for any line coming through the stop in the same direction on the same schedule. 
 #' @param wide (optional) if true, then return a wide rather than tidy data frame
-#' @param service_ids (optional) to calculate for a specific service id
 #' @export
 #' @return a dataframe of stops with a "Trips" variable representing the count trips taken through each stop for a route within a given time frame
+#' @importFrom dplyr %>%
+#' @importFrom rlang .data !! :=
+#' @importFrom stats median sd
+#' @examples 
+#' data(gtfs_obj)
+#' stop_frequency_summary <- stop_frequency(gtfs_obj, by_route=FALSE)
+#' x <- order(stop_frequency_summary$headway)
+#' head(stop_frequency_summary[x,])
+
 stop_frequency <- function(gtfs_obj,
                             start_hour=6,
                             end_hour=22,
@@ -25,51 +33,57 @@ stop_frequency <- function(gtfs_obj,
   service_ids <- service_by_dow(calendar,dow)
   
   trips <- trips %>% 
-    filter(service_id %in% service_ids) %>%
-      count_service_trips(.)
+    dplyr::filter(.data$service_id %in% service_ids) %>%
+      count_service_trips()
   
-  stop_time_trips <- inner_join(stop_times,
+  stop_time_trips <- dplyr::inner_join(stop_times,
                                 trips, 
                                 by="trip_id")
   if(by_route==FALSE){
     stop_time_trips <- stop_time_trips %>%
-      group_by(direction_id,
-               stop_id,
-               service_id) %>%
-      most_frequent_service(.) %>%
-      summarise(departures = n())
+      dplyr::group_by(.data$direction_id,
+                      .data$stop_id,
+                      .data$service_id) %>%
+      most_frequent_service() %>%
+      dplyr::summarise(departures = dplyr::n())
   } 
   else if(by_route==TRUE) {
   stop_time_trips <- stop_time_trips %>%
-    group_by(route_id,
-             direction_id,
-             stop_id,
-             service_id) %>%
-    most_frequent_service(.) %>%
-      summarise(departures = n())
+    dplyr::group_by(.data$route_id,
+                    .data$direction_id,
+                    .data$stop_id,
+                    .data$service_id) %>%
+    most_frequent_service() %>%
+      dplyr::summarise(departures = dplyr::n())
   }
   t1 <- end_hour - start_hour
   minutes1 <- 60*t1
   stop_time_trips$headway <- minutes1/stop_time_trips$departures
   
   if(wide==TRUE){
-    stops_frequencies <- stops_frequencies %>%
-      select(-departures,-service) %>%
+    stop_time_trips <- stop_time_trips %>%
+      dplyr::select(-.data$departures,-.data$service) %>%
       tibble::rowid_to_column() %>%
-      tidyr::spread(direction, headway, sep="_")
+      tidyr::spread(.data$direction, .data$headway, sep="_")
   }
-  return(stop_time_trips)
+  return(stop_time_trips %>% tibble::as_tibble())
 }
 
 #' Get stop frequency for buses aggregated up to routes
 #' 
 #' should take: 
-#' @param gtfs_obj a standard gtfsr object
-#' @param start_time, 
-#' @param end_time, 
-#' @param service e.g. "weekend" or "saturday"
+#' @param gtfs_obj a list of gtfs dataframes as read by the trread package.
+#' @param start_hour (optional) an integer, default 6 (6 am)
+#' @param end_hour (optional) an integer, default 22 (10 pm)
+#' @param dow (optional) an integeger vector with days of week. monday=1. default: c(1,1,1,1,1,0,0)
 #' @return route_headways a dataframe of route headways
 #' @export
+#' @examples 
+#' data(gtfs_obj)
+#' route_frequency_summary <- route_frequency(gtfs_obj)
+#' x <- order(route_frequency_summary$median_headways)
+#' head(route_frequency_summary[x,])
+
 route_frequency <- function(gtfs_obj,
                             start_hour=6,
                             end_hour=22,
@@ -81,11 +95,11 @@ route_frequency <- function(gtfs_obj,
   
   if (dim(stop_frequency_df)[[1]]!=0) {
     route_headways <- stop_frequency_df %>%
-      group_by(route_id) %>%
-      summarise(median_headways = as.integer(round(median(headway),0)),
-                mean_headways = as.integer(round(mean(headway),0)),
-                std_dev_headways = round(sd(headway),2),
-                stop_count = n())
+      dplyr::group_by("route_id") %>%
+      dplyr::summarise(median_headways = as.integer(round(median(.data$headway),0)),
+                       mean_headways = as.integer(round(mean(.data$headway),0)),
+                       st_dev_headways = round(sd(.data$headway),2),
+                       stop_count = dplyr::n())
   } else
   {
     warning("agency gtfs has no published service for the specified period")

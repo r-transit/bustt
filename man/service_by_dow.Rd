@@ -17,3 +17,4 @@ service ids that match the schedule specified
 \description{
 Filter a gtfs calendar dataframe to service ids for specific days of the week.
 }
+\keyword{internal}

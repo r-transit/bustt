@@ -2,10 +2,10 @@
 #' 
 #' @param trips gtfs dataframe with a service_trips count column
 #' @return the trips that are in the most frequent service window
-#' @export
+#' @keywords internal
 most_frequent_service <- function(trips) {
   trips %>%
-    top_n(1, service_trips)
+    dplyr::top_n(1, .data$service_trips)
 }
 
 #' Filter a gtfs calendar dataframe to service ids for specific days of the week.
@@ -13,7 +13,7 @@ most_frequent_service <- function(trips) {
 #' @param gtfs_object object made by join_all_gtfs_tables
 #' @param dow default to "weekday" (1,1,1,1,1,0,0)
 #' @return service ids that match the schedule specified
-#' @export 
+#' @keywords internal
 service_by_dow <- function(calendar_df,
                            dow=c(1,1,1,1,1,0,0)){
   calendar_df <- subset(calendar_df, 
@@ -32,11 +32,12 @@ service_by_dow <- function(calendar_df,
 #' @param gtfsr object
 #' @return count of service by id
 #' @export
+#' @keywords internal
 count_service_trips <- function(trips) {
   trips %>%
-    group_by(service_id) %>% 
-      mutate(service_trips = n()) %>%
-        as_tibble()
+    dplyr::group_by(.data$service_id) %>% 
+      dplyr::mutate(service_trips = dplyr::n()) %>%
+        tibble::as_tibble()
 }
 
 #' Get a set of stops for a given set of service ids
@@ -47,13 +48,13 @@ count_service_trips <- function(trips) {
 #' @keywords internal
 stops_for_service <- function(g1, select_service_id) {
   some_trips <- g1$trips_df %>%
-    filter(service_id %in% select_service_id)
+    dplyr::filter(.data$service_id %in% select_service_id)
   
   some_stop_times <- g1$stop_times_df %>% 
-    filter(trip_id %in% some_trips$trip_id) 
+    dplyr::filter(.data$trip_id %in% some_trips$trip_id) 
   
   some_stops <- g1$stops_df %>%
-    filter(stop_id %in% some_stop_times$stop_id)
+    dplyr::filter(.data$stop_id %in% some_stop_times$stop_id)
   
   return(some_stops)
 }
