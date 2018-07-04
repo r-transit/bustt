@@ -16,7 +16,7 @@ You can install this package from GitHub using the devtools package:
     if (!require(devtools)) {
         install.packages('devtools')
     }
-    devtools::install_github('r-gtfs/gtschedule')
+    devtools::install_github('r-gtfs/bustt')
 
 ## Example Usage
 
@@ -31,21 +31,6 @@ NYC <- import_gtfs("http://web.mta.info/developers/data/nyct/subway/google_trans
 #> [1] "agency.txt"         "calendar_dates.txt" "calendar.txt"      
 #> [4] "routes.txt"         "shapes.txt"         "stop_times.txt"    
 #> [7] "stops.txt"          "transfers.txt"      "trips.txt"
-```
-
-### Route Headways
-
-List the routes with the shortest median headways.
-
-``` r
-route_frequency_summary <- route_frequency(NYC) %>%
-  arrange(median_headways)
-
-head(route_frequency_summary)
-#> # A tibble: 1 x 5
-#>   `"route_id"` median_headways mean_headways st_dev_headways stop_count
-#>   <chr>                  <int>         <int>           <dbl>      <int>
-#> 1 route_id                   9            51            151.       1794
 ```
 
 ### Stop Headways
