@@ -1,6 +1,6 @@
 Package: bustt
 Type: Package
-Title: Bus and transit time and headways for GTFS
+Title: Bus and transit time calculations
 Version: 0.1.0
 Authors@R: c(
     person("Tom", "Buckley", role = c("aut", "cre"), email = "tom@tbuckl.com"),
