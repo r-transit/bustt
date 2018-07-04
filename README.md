@@ -1,3 +1,4 @@
+[![Travis-CI Build Status](https://travis-ci.org/r-gtfs/bust.svg?branch=master)](https://travis-ci.org/r-gtfs/bustt)
 
 ## Description
 
