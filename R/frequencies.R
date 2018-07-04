@@ -8,7 +8,7 @@
 #' @export
 #' @return a dataframe of stops with a "Trips" variable representing the count trips taken through each stop for a route within a given time frame
 #' @importFrom dplyr %>%
-#' @importFrom rlang .data !! :=
+#' @importFrom rlang .data !! := quo enquo
 #' @importFrom stats median sd
 #' @examples 
 #' data(gtfs_obj)
@@ -58,7 +58,7 @@ stop_frequency <- function(gtfs_obj,
   }
   t1 <- end_hour - start_hour
   minutes1 <- 60*t1
-  stop_time_trips$headway <- minutes1/stop_time_trips$departures
+  stop_time_trips$headway <- round(minutes1/stop_time_trips$departures,digits=4)
   
   if(wide==TRUE){
     stop_time_trips <- stop_time_trips %>%
@@ -94,8 +94,8 @@ route_frequency <- function(gtfs_obj,
                                       dow)  
   
   if (dim(stop_frequency_df)[[1]]!=0) {
-    route_headways <- stop_frequency_df %>%
-      dplyr::group_by("route_id") %>%
+    route_frequency_df <- stop_frequency_df %>%
+      dplyr::group_by_('route_id') %>%
       dplyr::summarise(median_headways = as.integer(round(median(.data$headway),0)),
                        mean_headways = as.integer(round(mean(.data$headway),0)),
                        st_dev_headways = round(sd(.data$headway),2),
@@ -104,6 +104,6 @@ route_frequency <- function(gtfs_obj,
   {
     warning("agency gtfs has no published service for the specified period")
   }
-  return(route_headways)
+  return(route_frequency_df)
 }
 
