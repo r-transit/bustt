@@ -1,15 +1,15 @@
 Package: bustt
 Type: Package
-Title: Bus and transit time calculations
+Title: Bus and Transit Time Calculations
 Version: 0.1.0
 Authors@R: c(
     person("Tom", "Buckley", role = c("aut", "cre"), email = "tom@tbuckl.com"),
     person("Kearey", "Smith", role = c("aut")),
     person("Dave", "Vautin", role = c("aut"))
   )
-Description: Calculate headways and work with time and schedules for bus, train, etc on transit data. Answer questions like: 
-  What are the headway of train lines at 59-Street Columbus Circle on Saturdays?
-  What are the typical headway characteristics of the A Train on weekdays?
+Description: Calculate and work with time and schedules for bus, train, etc on transit data. Answer questions like: 
+  What is the time between any train arrival at 59-Street Columbus Circle on Saturdays?
+  What is the time between trains for stops along the A Train on weekdays?
 License: GPL
 LazyData: TRUE
 Depends: R (>= 3.2.4)
@@ -24,7 +24,6 @@ Suggests:
     knitr,
     rmarkdown
 RoxygenNote: 6.0.1
-VignetteBuilder: knitr
 URL: https://github.com/r-gtfs/bustt
 BugReports: https://github.com/r-gtfs/bustt/issues
 Roxygen: list(markdown = TRUE)
