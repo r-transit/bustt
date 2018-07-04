@@ -1,4 +1,4 @@
-[![Travis-CI Build Status]([![Travis-CI Build Status](https://travis-ci.com/r-gtfs/bustt.svg?branch=master)](https://travis-ci.com/r-gtfs/bustt))
+([![Travis-CI Build Status](https://travis-ci.com/r-gtfs/bustt.svg?branch=master)](https://travis-ci.com/r-gtfs/bustt))
 ## Description
 
 `bustt` is a package for working with time in transit schedule data. In
