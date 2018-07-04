@@ -2,12 +2,12 @@ Package: bustt
 Type: Package
 Title: Bus and transit time and headways for GTFS
 Version: 0.1.0
-Authors@R: as.person(c(
-    "Tom Buckley <tom@tbuckl.com> [aut,cre]",
-    "Kearey Smith [ctb]",
-    "Dave Vautin [ctb]"
-  ))
-Description: Calculate headways and work with time and schedules for bus, train, etc on GTFS data. Answer questions like: 
+Authors@R: c(
+    person("Tom", "Buckley", role = c("aut", "cre"), email = "tom@tbuckl.com"),
+    person("Kearey", "Smith", role = c("aut")),
+    person("Dave", "Vautin", role = c("aut"))
+  )
+Description: Calculate headways and work with time and schedules for bus, train, etc on transit data. Answer questions like: 
   What are the headway of train lines at 59-Street Columbus Circle on Saturdays?
   What are the typical headway characteristics of the A Train on weekdays?
 License: GPL
