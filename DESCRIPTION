@@ -4,10 +4,12 @@ Title: Bus and transit time and headways for GTFS
 Version: 0.1.0
 Authors@R: as.person(c(
     "Tom Buckley <tom@tbuckl.com> [aut,cre]",
-    "Danton Noriega-Goodwin <danton.noriega@gmail.com> [ctb]",
-    "Michael Sumner [ctb]"
+    "Kearey Smith [ctb]",
+    "Dave Vautin [ctb]"
   ))
-Description: Calculate headways and work with time and schedules for bus, train, etc on GTFS data.  
+Description: Calculate headways and work with time and schedules for bus, train, etc on GTFS data. Answer questions like: 
+  What are the headway of train lines at 59-Street Columbus Circle on Saturdays?
+  What are the typical headway characteristics of the A Train on weekdays?
 License: GPL
 LazyData: TRUE
 Depends: R (>= 3.2.4)
@@ -15,7 +17,6 @@ Imports:
     dplyr,
     tibble,
     lubridate,
-    trread,
     tidyr,
     rlang
 Suggests:
@@ -24,6 +25,6 @@ Suggests:
     rmarkdown
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
-URL: https://github.com/r-gtfs/gtschedule
-BugReports: https://github.com/r-gtfs/gtschedule/issues
+URL: https://github.com/r-gtfs/bustt
+BugReports: https://github.com/r-gtfs/bustt/issues
 Roxygen: list(markdown = TRUE)
