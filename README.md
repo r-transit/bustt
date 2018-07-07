@@ -1,4 +1,6 @@
 [![Travis-CI Build Status](https://travis-ci.com/r-gtfs/bustt.svg?branch=master)](https://travis-ci.com/r-gtfs/bustt)
+[![cran version](https://www.r-pkg.org/badges/version/bustt)](https://cran.r-project.org/package=bustt)
+
 ## Description
 
 `bustt` is a package for working with time in transit schedule data. In
