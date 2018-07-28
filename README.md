@@ -1,4 +1,4 @@
-[![Travis-CI Build Status](https://travis-ci.com/r-gtfs/bustt.svg?branch=master)](https://travis-ci.com/r-gtfs/bustt)
+[![Travis-CI Build Status](https://travis-ci.com/r-transit/bustt.svg?branch=master)](https://travis-ci.com/r-transit/bustt)
 [![cran version](https://www.r-pkg.org/badges/version/bustt)](https://cran.r-project.org/package=bustt)
 
 ## Description
