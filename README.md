@@ -13,12 +13,16 @@ particular, it is focused on questions like:
 
 ## Installation
 
-You can install this package from GitHub using the devtools package:
+Install from CRAN: `install.packages("bustt")`
+
+For development, you can install this package from GitHub using the devtools package:
 
     if (!require(devtools)) {
         install.packages('devtools')
     }
     devtools::install_github('r-gtfs/bustt')
+
+Note that the development version is currently less reliable than the CRAN version.
 
 ## Example Usage
 
