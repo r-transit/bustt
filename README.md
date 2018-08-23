@@ -1,5 +1,11 @@
+NOTE: deprecated, functionality moved to: https://github.com/r-transit/tidytransit
+
+You can still use this but its not under development for now. 
+
 [![Travis-CI Build Status](https://travis-ci.com/r-transit/bustt.svg?branch=master)](https://travis-ci.com/r-transit/bustt)
 [![cran version](https://www.r-pkg.org/badges/version/bustt)](https://cran.r-project.org/package=bustt)
+
+
 
 ## Description
 
